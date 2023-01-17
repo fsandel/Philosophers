@@ -6,12 +6,28 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:31:37 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/17 14:39:56 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/01/17 15:25:35 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
+/*
+fork
+kill
+exit
+pthread_create
+pthread_detach
+pthread_join
+usleep
+gettimeofday
+waitpid
+sem_open
+sem_close
+sem_post
+sem_wait
+sem_unlink
+*/
 int	main(int argc, char *argv[])
 {
 	t_rules		*rules;
