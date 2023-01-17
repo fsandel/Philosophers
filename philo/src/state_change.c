@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:03:19 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/16 19:23:11 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/01/17 13:42:13 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ void	eat(t_philo *philo)
 		take_right_fork(philo);
 		take_left_fork(philo);
 	}
-	philo_printf(philo, "is eating", BLUE);
-	philo->currently_eating = 1;
+	pthread_mutex_lock(&philo->eat_mutex);
 	philo->last_eating = current_time_ms();
+	philo_printf(philo, "is eating", BLUE);
+	pthread_mutex_unlock(&philo->eat_mutex);
 	ft_sleep(philo->rules->time_to_eat);
 	if (pthread_mutex_unlock(&philo->left))
 		philo_printf(philo, "failed unlocking left fork\n", RED);
 	if (pthread_mutex_unlock(philo->right))
 		philo_printf(philo, "failed unlocking right fork\n", RED);
 	philo->times_to_eat--;
-	philo->currently_eating = 0;
 }
 
 void	think(t_philo *philo)

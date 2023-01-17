@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:51:10 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/16 19:03:30 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/01/17 13:29:57 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,10 @@ t_philo	**setup_philos(t_rules *rules)
 		all_philos[i]->number = i;
 		all_philos[i]->start = time_in_ms;
 		all_philos[i]->last_eating = time_in_ms;
-		all_philos[i]->last_thinking = time_in_ms;
-		all_philos[i]->last_sleeping = time_in_ms;
 		all_philos[i]->rules = rules;
 		all_philos[i]->times_to_eat = rules->number_of_eat;
-		all_philos[i]->currently_eating = 0;
 		all_philos[i]->is_dead = 0;
+		pthread_mutex_init(&all_philos[i]->eat_mutex, NULL);
 		pthread_mutex_init(&all_philos[i]->print, NULL);
 		pthread_mutex_init(&all_philos[i]->left, NULL);
 		i++;

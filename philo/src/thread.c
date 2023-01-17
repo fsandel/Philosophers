@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:42:23 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/16 18:32:18 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/01/17 13:47:56 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,16 @@ void	*thread(void *arg)
 	t_philo			*philo;
 
 	philo = (t_philo *)arg;
+	if (philo->number % 4)
+		ft_sleep(1);
 	while (philo->times_to_eat > 0)
 	{
 		eat(philo);
-		sleeping(philo);
-		think(philo);
+		if (philo->times_to_eat > 0 && !philo->is_dead)
+		{
+			sleeping(philo);
+			think(philo);
+		}
 	}
 	pthread_exit(NULL);
 }

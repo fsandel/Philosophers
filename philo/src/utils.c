@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:10:27 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/16 18:30:49 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/01/17 13:50:55 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,12 @@ void	free_all(t_philo **all_philos, t_rules *rules)
 
 void	philo_printf(t_philo *philo, char *string, char *color)
 {
-	pthread_mutex_lock(&philo->print);
-	printf("%s%ld \t%d\t %s%s\n", color,
-		current_time_ms() - philo->start, philo->number, string, DEFAULT);
-	pthread_mutex_unlock(&philo->print);
+	if (current_time_ms() - philo->last_eating < philo->rules->time_to_die)
+	{
+		pthread_mutex_lock(&philo->print);
+		printf("%s%ld \t%d\t %s%s\n", color,
+		current_time_ms() - philo->start, philo->number + 1, string, DEFAULT);
+		pthread_mutex_unlock(&philo->print);
+	}
+	
 }

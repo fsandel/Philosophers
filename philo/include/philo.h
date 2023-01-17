@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:32:58 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/16 19:18:51 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/01/17 13:40:15 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <string.h>
 # include <sys/time.h>
 
-# define SECOND 1000000
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
@@ -48,14 +47,12 @@ typedef struct s_philo
 	pthread_mutex_t	left;
 	pthread_mutex_t	*right;
 	long			last_eating;
-	long			last_sleeping;
-	long			last_thinking;
 	long			times_to_eat;
 	pthread_mutex_t	print;
 	t_rules			*rules;
+	pthread_mutex_t	eat_mutex;
 	pthread_t		id;
 	int				is_dead;
-	int				currently_eating;
 }		t_philo;
 
 typedef struct s_waitress
