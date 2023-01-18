@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:10:27 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/17 15:07:22 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/01/18 13:32:47 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,19 @@ int	ft_isdigit(int arg)
 
 size_t	ft_strlen(const char *str)
 {
-	size_t	i;
+	size_t	len;
+	int		i;
 
 	i = 0;
-	while (str[i])
+	len = 0;
+	while (str[i] == '0')
 		i++;
-	return (i);
+	while (str[i])
+	{
+		i++;
+		len++;
+	}
+	return (len);
 }
 
 void	free_all(t_philo **all_philos, t_rules *rules)

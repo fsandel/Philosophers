@@ -6,7 +6,7 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2023/01/16 18:31:12 by fsandel          ###   ########.fr        #
+#    Updated: 2023/01/18 13:20:31 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,16 +27,20 @@ HDR				= $(addprefix $(HDR_DIR)/, $(HDR_FILES))
 HDR_DIR			= include
 HDR_FILES		= philo.h
 
+GREEN			= "\033[32m"
+LGREEN			= "\033[92m"
+DEFAULT			= "\033[39m"
+RED				= "\033[31m"
 
 all:			obj_dir $(NAME)
 				
 $(NAME):		$(OBJ) | $(HDR)
 				@$(CC) $^ -o $@ $(CFLAGS)
-				@echo "created $@"
+				@echo $(GREEN)Compiled$(DEFAULT) $@
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
+				@echo $(LGREEN)Compiling$(DEFAULT) $<
 				@$(CC) -c $< $(CFLAGS) -o $@
-				@echo "created $@"
 
 clean:
 				@$(RM) $(OBJ)
@@ -48,14 +52,11 @@ fclean:
 				@$(RM) $(NAME)
 				@echo "fcleaned $(NAME)"
 
-
 re:
 				@make fclean
 				@make all
 
-
 obj_dir:
 				@mkdir -p $(OBJ_DIR)
-
 
 .PHONY:			all clean fclean re

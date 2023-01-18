@@ -6,19 +6,17 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:32:58 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/17 15:13:07 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/01/18 13:34:31 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include <signal.h>
 # include <pthread.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <string.h>
 # include <sys/time.h>
 
 # define INT_MAX 2147483647
@@ -30,6 +28,7 @@
 # define BLUE "\033[0;34m"
 # define PURPLE "\033[0;35m"
 # define CYAN "\033[0;36m"
+# define GREEN "\033[32m"
 
 typedef struct s_rules
 {
