@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:10:27 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/18 13:32:47 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/01/18 15:27:36 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	free_all(t_philo **all_philos, t_rules *rules)
 	{
 		pthread_mutex_destroy(&all_philos[i]->left);
 		pthread_mutex_destroy(&all_philos[i]->eat_mutex);
+		pthread_mutex_destroy(&all_philos[i]->check);
 		free(all_philos[i]);
 		i++;
 	}

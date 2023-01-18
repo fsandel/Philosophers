@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:03:19 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/18 13:27:49 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/01/18 15:46:57 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 void	take_left_fork(t_philo *philo)
 {
-	if (pthread_mutex_lock(&philo->left))
-		philo_printf(philo, "failed locking left fork\n", RED);
-	else
-		philo_printf(philo, "has taken a fork", GREEN);
+	pthread_mutex_lock(&philo->left);
+	philo_printf(philo, "has taken a fork", GREEN);
 }
 
 void	take_right_fork(t_philo *philo)
 {
-	if (pthread_mutex_lock(philo->right))
-		philo_printf(philo, "failed locking right fork\n", RED);
-	else
-		philo_printf(philo, "has taken a fork", GREEN);
+	pthread_mutex_lock(philo->right);
+	philo_printf(philo, "has taken a fork", GREEN);
 }
 
 void	eat(t_philo *philo)
@@ -44,12 +40,12 @@ void	eat(t_philo *philo)
 	philo->last_eating = current_time_ms();
 	philo_printf(philo, "is eating", YELLOW);
 	pthread_mutex_unlock(&philo->eat_mutex);
-	ft_sleep(philo->rules->time_to_eat);
-	if (pthread_mutex_unlock(&philo->left))
-		philo_printf(philo, "failed unlocking left fork\n", RED);
-	if (pthread_mutex_unlock(philo->right))
-		philo_printf(philo, "failed unlocking right fork\n", RED);
+	pthread_mutex_lock(&philo->check);
 	philo->times_to_eat--;
+	pthread_mutex_unlock(&philo->check);
+	ft_sleep(philo->rules->time_to_eat);
+	pthread_mutex_unlock(&philo->left);
+	pthread_mutex_unlock(philo->right);
 }
 
 void	think(t_philo *philo)

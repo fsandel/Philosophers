@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:42:23 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/17 15:00:18 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/01/18 15:30:10 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,11 @@ void	*thread(void *arg)
 	philo = (t_philo *)arg;
 	if (philo->number % 4)
 		ft_sleep(3);
-	while (philo->times_to_eat > 0)
+	while (1)
 	{
 		eat(philo);
-		if (philo->times_to_eat > 0)
-		{
-			sleeping(philo);
-			think(philo);
-		}
+		sleeping(philo);
+		think(philo);
 	}
 	pthread_exit(NULL);
 }
@@ -50,10 +47,7 @@ void	join_threads(t_philo **all_philos, t_rules *rules)
 
 	i = 0;
 	while (i < rules->amount)
-	{
-		pthread_join(all_philos[i]->id, &ret);
-		i++;
-	}
+		pthread_join(all_philos[i++]->id, &ret);
 }
 
 void	detach_threads(t_philo **all_philos, t_rules *rules)
@@ -62,8 +56,5 @@ void	detach_threads(t_philo **all_philos, t_rules *rules)
 
 	i = 0;
 	while (i < rules->amount)
-	{
-		pthread_detach(all_philos[i]->id);
-		i++;
-	}
+		pthread_detach(all_philos[i++]->id);
 }

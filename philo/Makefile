@@ -6,7 +6,7 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2023/01/18 13:20:31 by fsandel          ###   ########.fr        #
+#    Updated: 2023/01/18 15:55:55 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS			= -Wall -Wextra -Werror
 
 SRC				= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 SRC_DIR			= src
-SRC_FILES		= main.c state_change.c time.c utils.c input.c setup.c thread.c waitress.c
+SRC_FILES		= main.c lifestyle.c time.c utils.c input.c setup.c thread.c waitress.c
 
 OBJ				= $(addprefix $(OBJ_DIR)/, $(OBJ_FILES))
 OBJ_DIR			= obj
@@ -59,4 +59,4 @@ re:
 obj_dir:
 				@mkdir -p $(OBJ_DIR)
 
-.PHONY:			all clean fclean re
+.PHONY:			all clean fclean re obj_dir
