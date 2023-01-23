@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:45:20 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/21 19:47:32 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/01/23 14:13:48 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	*waitress_thread(void *arg)
 				philo->number + 1, "died", DEFAULT);
 			sem_post(philo->rules->death);
 		}
+		usleep(50);
 	}
 	return (NULL);
 }
