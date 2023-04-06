@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:45:20 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/23 14:13:48 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/04/06 15:48:49 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 int	is_dead(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->status_mutex);
 	if (philo->last_eating + philo->rules->time_to_die < current_time_ms())
 		return (1);
 	else
 	{
-		pthread_mutex_unlock(&philo->status_mutex);
 		return (0);
 	}
 }

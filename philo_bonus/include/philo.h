@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:32:58 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/21 19:57:47 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/04/06 15:52:36 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ typedef struct s_philo
 	long			last_eating;
 	long			times_to_eat;
 	t_rules			*rules;
-	pthread_mutex_t	status_mutex;
 	pthread_t		waitress_id;
 }		t_philo;
 

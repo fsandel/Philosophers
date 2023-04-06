@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:51:10 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/21 19:58:52 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/04/06 15:48:56 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,4 @@ void	setup_philo(t_philo *philo, t_rules *rules, int i)
 	philo->last_eating = rules->start;
 	philo->rules = rules;
 	philo->times_to_eat = rules->number_of_eat;
-	pthread_mutex_init(&philo->status_mutex, NULL);
 }
