@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:42:23 by fsandel           #+#    #+#             */
-/*   Updated: 2023/01/18 15:30:10 by fsandel          ###   ########.fr       */
+/*   Updated: 2023/04/06 15:42:04 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	*thread(void *arg)
 		sleeping(philo);
 		think(philo);
 	}
-	pthread_exit(NULL);
 }
 
 void	join_threads(t_philo **all_philos, t_rules *rules)
